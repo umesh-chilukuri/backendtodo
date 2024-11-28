@@ -5,13 +5,13 @@ import {
   newTask,
   updateTask,
 } from "../controllers/task.js";
-import { isAuthenticated } from "../middlewares/auth.js";
+import { isauthenticated} from "../middlewares/auth.js";
 
 const router = express.Router();
 
-router.post("/new", isAuthenticated, newTask);
+router.post("/new", isauthenticated, newTask);
 
-router.get("/my", isAuthenticated, getMyTask);
+router.get("/my", isauthenticated, getMyTask);
 
 router
   .route("/:id")
