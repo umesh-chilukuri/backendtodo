@@ -81,6 +81,7 @@ export const login=async(req,res,next)=>{
 export const register=async (req,res)=>{
     const {name,email,password}=req.body;
      console.log(name);
+     try{
      let user=await User.findOne({email});
      if(user)  return res.status(404).json({
         success:false,
@@ -92,6 +93,9 @@ export const register=async (req,res)=>{
        user= await User.create({name,email,password:hassedPassword})
     sendcookie(user,res,"registration success",201)
     }
+}catch(err){
+    console.log(err);
+}
  
 }
 
